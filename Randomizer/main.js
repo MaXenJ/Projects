@@ -4,15 +4,32 @@ let result = document.querySelector('.result');
 let btn = document.querySelector('.btn');
 
 
+btn.addEventListener('click', () => {
+
+    let val1 = Number(input1.value);
+    let val2 = Number(input2.value);
+    
+    result.style.fontSize = '140px';
+    result.style.color ='grey';
+    result.textContent = Randomizer(val1, val2);
+})
+
+
+
+
 function Randomizer (min, max) {
-    let res = min + Math.round(Math.random() * (max-min));
-     result.textContent = res;
-    return result;    
+
+       if (isNaN(min) == true && isNaN(max) == true) { 
+            return 'Invalid numbers';
+    }
+       else if (isNaN(max) == true) {
+            return 'Max is not a number'; 
+    }
+       else if (isNaN(min) == true) {
+            return 'Min is not a number';
+    }
+           else return min + Math.round(Math.random() * (max-min));
+    
 }
 
 
-btn.addEventListener('click', () => {
-    result.style.fontSize = '280px';
-    result.style.color ='grey';
-    Randomizer(Number(input1.value), Number(input2.value));
-})
